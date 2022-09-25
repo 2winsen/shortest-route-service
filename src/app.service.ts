@@ -1,10 +1,9 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, Logger } from '@nestjs/common';
 import { getDistance } from 'geolib';
 import { groupBy, keyBy } from 'lodash';
-import * as airportsData from './data/airports.json';
-import * as routesData from './data/routes.json';
 import { Airport, AirportMap, Graph, Route, RouteWithDistance } from './types';
 import { dijkstra } from './utils/dijkstra';
+import { Db } from 'mongodb';
 
 @Injectable()
 export class AppService {
@@ -13,6 +12,16 @@ export class AppService {
   private icaoToAirport: Partial<Record<string, Airport>> = {};
   private iataToAirport: Partial<Record<string, Airport>> = {};
   private idToAirport: Partial<Record<string, Airport>> = {};
+
+  constructor(@Inject('DATABASE_CONNECTION') private db: Db) { }
+
+  private async findAirports(): Promise<Airport[]> {
+    return await this.db.collection<Airport>('airports').find().toArray();
+  }
+
+  private async findRoutes(): Promise<Route[]> {
+    return await this.db.collection<Route>('routes').find().toArray();
+  }
 
   private createGraph(airports: Airport[], routes: Route[]): Graph {
     const validRoutes = this.filterValidRoutes(routes, this.idToAirport);
@@ -48,9 +57,9 @@ export class AppService {
     return validRoutes;
   }
 
-  onModuleInit() {
-    const airports = airportsData as Airport[];
-    const routes = routesData as Route[];
+  async onModuleInit() {
+    const airports = await this.findAirports();
+    const routes = await this.findRoutes();
     this.icaoToAirport = keyBy(airports, (item) => item.icao);
     this.iataToAirport = keyBy(airports, (item) => item.iata);
     this.idToAirport = keyBy(airports, (item) => item.airportId);

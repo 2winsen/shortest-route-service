@@ -1,0 +1,91 @@
+export const testAirports = [
+  {
+    "airportId": 3953,
+    "name": "Riga International Airport",
+    "city": "Riga",
+    "country": "Latvia",
+    "iata": "RIX",
+    "icao": "EVRA",
+    "latitude": 56.92359924316406,
+    "longitude": 23.971099853515625,
+    "altitude": 36,
+    "timezone": 2,
+    "dst": "E",
+    "tz": "Europe/Riga",
+    "type": "airport",
+    "source": "OurAirports"
+  },
+  {
+    "airportId": 1587,
+    "name": "Václav Havel Airport Prague",
+    "city": "Prague",
+    "country": "Czech Republic",
+    "iata": "PRG",
+    "icao": "LKPR",
+    "latitude": 50.1008,
+    "longitude": 14.26,
+    "altitude": 1247,
+    "timezone": 1,
+    "dst": "E",
+    "tz": "Europe/Prague",
+    "type": "airport",
+    "source": "OurAirports"
+  },
+  {
+    "airportId": 1562,
+    "name": "Pisa International Airport",
+    "city": "Pisa",
+    "country": "Italy",
+    "iata": "PSA",
+    "icao": "LIRP",
+    "latitude": 43.683899,
+    "longitude": 10.3927,
+    "altitude": 6,
+    "timezone": 1,
+    "dst": "E",
+    "tz": "Europe/Rome",
+    "type": "airport",
+    "source": "OurAirports"
+  },
+  {
+    "airportId": 3779,
+    "name": "Elkins-Randolph Co-Jennings Randolph Field",
+    "city": "Elkins",
+    "country": "United States",
+    "iata": "EKN",
+    "icao": "KEKN",
+    "latitude": 38.88940048,
+    "longitude": -79.85710144,
+    "altitude": 1987,
+    "timezone": -5,
+    "dst": "A",
+    "tz": "America/New_York",
+    "type": "airport",
+    "source": "OurAirports"
+  },
+];
+
+export const testRoutes = [
+  {
+    "airline": "airline",
+    "airlineId": 1,
+    "sourceAirport": "RIX",
+    "sourceAirportId": 3953,
+    "destinationAirport": "PRG",
+    "destinationAirportId": 1587,
+    "codeshare": "",
+    "stops": 0,
+    "equipment": "CR2"
+  },
+  {
+    "airline": "airline",
+    "airlineId": 1,
+    "sourceAirport": "PRG",
+    "sourceAirportId": 1587,
+    "destinationAirport": "PSA",
+    "destinationAirportId": 1562,
+    "codeshare": "",
+    "stops": 0,
+    "equipment": "CR2"
+  },
+];

@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+
+  mongodb:
+    image: mongo:4.4.17-rc2
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-seed:
+    build: ./mongo-seed
+    depends_on:
+      - mongodb
+
+  api:
+    build: .
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo-seed
