@@ -1,4 +1,4 @@
-FROM mongo
+FROM mongo:4.4.17-rc2
 
 WORKDIR /
 COPY airports.json /airports.json
