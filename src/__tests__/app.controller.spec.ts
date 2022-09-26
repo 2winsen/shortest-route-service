@@ -34,22 +34,22 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('getShortestPath', () => {
+  describe('getShortestRoute', () => {
     it('should shortest path using IATA', () => {
-      expect(appController.getShortestPath('RIX', 'PRG')).toBe('RIX->PRG distance 993.12 km');
+      expect(appController.getShortestRoute('RIX', 'PRG')).toBe('RIX->PRG distance 993.12 km');
     });
 
     it('should shortest path using ICAO', () => {
-      expect(appController.getShortestPath('EVRA', 'LKPR')).toBe('EVRA->LKPR distance 993.12 km');
+      expect(appController.getShortestRoute('EVRA', 'LKPR')).toBe('EVRA->LKPR distance 993.12 km');
     });
 
     it('should shortest path 3 routes', () => {
-      expect(appController.getShortestPath('RIX', 'PSA')).toBe('RIX->PRG->PSA distance 1765.39 km');
+      expect(appController.getShortestRoute('RIX', 'PSA')).toBe('RIX->PRG->PSA distance 1765.39 km');
     });
 
     it('should shortest path without known route', () => {
       expect(() => {
-        appController.getShortestPath('RIX', 'EKN')
+        appController.getShortestRoute('RIX', 'EKN')
       }).toThrowError('Could not find a path from RIX to EKN.');
     });
 
@@ -59,7 +59,7 @@ describe('AppController', () => {
       ['spongebob', 'patrick'],
     ])('should throw invalid data %#', (source, destination) => {
       expect(() => {
-        appController.getShortestPath(source, destination)
+        appController.getShortestRoute(source, destination)
       }).toThrowError('Invalid source or destination airport codes (please use IATA or ICAO).');
     });
   });

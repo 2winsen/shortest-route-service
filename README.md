@@ -6,7 +6,7 @@
 - For finding shortest path using Djikstra algorithm which is taken from github https://github.com/tcort/dijkstrajs
 - To make sure algorithm works for limited nodes count adjusted it to store all traversed nodes paths (check `djikstra.ts`)
 - Wrapped code into NestJS service
-- If built locally service url is http://localhost:3000/shortestPath/:source/:destination, where :source, and :destination are airport IATA or ICAO codes, whichever is used result will be generated in same format
+- If built locally service url is http://localhost:3000/shortestRoute/:source/:destination, where :source, and :destination are airport IATA or ICAO codes, whichever is used result will be generated in same format
 - If built locally Swagger docs are found http://localhost:3000/api
 - Tried to cover all the main files with unit tests
 - Initial data is stored in mongoDB database

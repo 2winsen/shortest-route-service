@@ -6,11 +6,11 @@ import { SizePipe } from './pipes/SizePipe';
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
-  @Get("shortestPath/:source/:destination")
-  getShortestPath(
+  @Get("shortest-route/:source/:destination")
+  getShortestRoute(
     @Param('source', SizePipe) source: string,
     @Param('destination', SizePipe) destination: string,
   ): string {
-    return this.appService.getShortestPath(source, destination);
+    return this.appService.getShortestRoute(source, destination);
   }
 }

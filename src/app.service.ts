@@ -82,7 +82,7 @@ export class AppService {
     return `${formattedPath.join('->')} distance ${distanceKm.toFixed(2)} km`;
   }
 
-  getShortestPath(source: string, destination: string): string {
+  getShortestRoute(source: string, destination: string): string {
     const iata = [source, destination].every(this.isIATA);
     let sourceAirport: Airport;
     let destinationAirport: Airport;
